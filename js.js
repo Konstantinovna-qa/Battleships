@@ -23,39 +23,43 @@
  ВЫВЕСТИ статистику
  */  
 
- const location1 = 3; 
- const location2 = 4;
- const location3 = 5;
+const location1 = 3;
+const location2 = 4;
+const location3 = 5;
 
- let guess; // undefined
- let hits = 0;
- let guesses = 0;
+let guess = -1; // undefined
+let hits = 0;
+let guesses = 0;
 
- let isSunk = false;
+let isSunk = false;
 
- while (isSunk === false) {
-      guess = prompt("Ты готов выстрелить? (введи цифру 0-6):");
+while (isSunk === false) {
+    const promptResault = parseInt(prompt("Ты готов выстрелить? (введи цифру 0-6):"));
 
-      if (guess < 0 || guess > 6) {
-           alert("Я же просил от 0 до 6 ввести!"); 
-      } else {
-           guesses = guesses + 1;
+    guess = isNaN(promptResault) ? -1 : promptResault;
 
-           if (guess === location1 || guess === location2 || guess === location3) {
-               hits = hits + 1;
+    if (guess < 0 || guess > 6) {
+        alert("Я же просил от 0 до 6 ввести!");
+    } else {
+        guesses = guesses + 1;
 
-               if(hits === 3) {
-                   isSunk = true;
-                   alert("Ты победил!");
-               }
-           } else {
-                alert("МИМО)))");
-           }
-     }
- }
+        if (guess === location1 || guess === location2 || guess === location3) {
+            hits = hits + 1;
 
- const status = `Вы выстрелили ${guesses} Для того чтобы попасть по кораблю, это показывает уровень вашей точности, как: ${3 / guesses}`;
- alert(status);
+            if (hits === 3) {
+                isSunk = true;
+                alert("Ты победил!");
+            } else {
+                alert("Ты попал");
+            }
+        } else {
+            alert("МИМО)))");
+        }
+    }
+}
+
+const status = `Вы выстрелили ${guesses} Для того чтобы попасть по кораблю, это показывает уровень вашей точности, как: ${3 / guesses}`;
+alert(status);
  /*
  Булевские операторы используются в логических выражениях,результатом которых
  является значение true или false. Булевские операторы деляться на два вида: 
